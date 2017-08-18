@@ -19,6 +19,7 @@ import java.util.Map;
 import javax.annotation.Nullable;
 
 import io.intercom.android.sdk.Intercom;
+import io.intercom.android.sdk.UserAttributes;
 import io.intercom.android.sdk.identity.Registration;
 
 public class IntercomModule extends ReactContextBaseJavaModule {
@@ -76,9 +77,7 @@ public class IntercomModule extends ReactContextBaseJavaModule {
         try {
           Map<String, Object> map = recursivelyDeconstructReadableMap(options);
 
-          // TODO: Fix UserAttributes
           UserAttributes userAttributes = new UserAttributes.Builder()
-                .withUserId("1")
                 .withCustomAttributes(map)
                 .build();
 
