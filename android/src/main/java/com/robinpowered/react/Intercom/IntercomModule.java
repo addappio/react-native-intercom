@@ -92,9 +92,7 @@ public class IntercomModule extends ReactContextBaseJavaModule {
         try {
           Map<String, Object> map = recursivelyDeconstructReadableMap(options);
 
-          // TODO: Fix UserAttributes
           UserAttributes userAttributes = new UserAttributes.Builder()
-                .withUserId("1")
                 .withCustomAttributes(map)
                 .build();
 
