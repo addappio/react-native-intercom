@@ -74,8 +74,15 @@ public class IntercomModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void updateUser(ReadableMap options, Callback callback) {
         try {
-            Map<String, Object> map = recursivelyDeconstructReadableMap(options);
-            Intercom.client().updateUser(map);
+          Map<String, Object> map = recursivelyDeconstructReadableMap(options);
+
+          // TODO: Fix UserAttributes
+          UserAttributes userAttributes = new UserAttributes.Builder()
+                .withUserId("1")
+                .withCustomAttributes(map)
+                .build();
+
+          Intercom.client().updateUser(userAttributes);
             Log.i(TAG, "updateUser");
             callback.invoke(null, null);
         } catch (Exception e) {
